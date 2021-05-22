@@ -4,8 +4,8 @@ const fm430 = new FM430();
 
 function gotScanResult(err, res) {
   if(err)
-    return console.log('modularized: Got error: ', err);
-  console.log('modularized: Got result: ', res);
+    return console.log('fm430: gotScanResult: Got error: ', err);
+  console.log('fm430: gotScanResult: Got result: ', res);
 }
 
 // TODO: Remove and replace with native functions
