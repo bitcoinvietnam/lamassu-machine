@@ -24,7 +24,6 @@ function disableScannng(callback) {
     () => {
       console.log('scanner: Initialization complete');
       console.log('scanner: Disabling light');
-      //sendDirectly(FM430DataTypes.ILLUMINATION.OFF, [73, 76, 76], [83, 67, 78]);
       fm430.Illumination(FM430DataTypes.ILLUMINATION.OFF);
     }, 
     // On initialization error

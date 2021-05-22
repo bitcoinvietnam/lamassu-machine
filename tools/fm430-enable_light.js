@@ -24,7 +24,6 @@ function enableScannng(callback) {
     () => {
       console.log('scanner: Initialization complete');
       console.log('scanner: Enabling light');
-      //sendDirectly(FM430DataTypes.ILLUMINATION.ALWAYS_ON, [73, 76, 76], [83, 67, 78]);
       fm430.Illumination(FM430DataTypes.ILLUMINATION.ALWAYS_ON);
     },
     // On initialization error
