@@ -4,8 +4,8 @@ const fm430 = new FM430();
 
 function gotScanResult(err, res) {
   if(err)
-    return console.log('modularized: Got error: ', err);
-  console.log('modularized: Got result: ', res);
+    return console.log('fm430: gotScanResult: Got error: ', err);
+  console.log('fm430: gotScanResult: Got result: ', res);
 }
 
 // TODO: Remove and replace with native functions
@@ -24,7 +24,6 @@ function enableScannng(callback) {
     () => {
       console.log('scanner: Initialization complete');
       console.log('scanner: Enabling light');
-      //sendDirectly(FM430DataTypes.ILLUMINATION.ALWAYS_ON, [73, 76, 76], [83, 67, 78]);
       fm430.Illumination(FM430DataTypes.ILLUMINATION.ALWAYS_ON);
     },
     // On initialization error
