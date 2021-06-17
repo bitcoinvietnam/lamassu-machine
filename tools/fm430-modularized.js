@@ -20,8 +20,9 @@ function gotError(err) {
 
 function gotResult(result) {
   // Make the output take less space
-  for (var key in result)
-    delete result[key].dataRaw;
+  for (let key in result)
+    if (result.hasOwnProperty(key))
+      delete result[key].dataRaw;
   console.log('modularized: Got result: ', result);
 }
 
