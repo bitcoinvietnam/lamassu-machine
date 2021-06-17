@@ -22,7 +22,6 @@ scratch/
 rwc
 
 i18n/*.zip
-ui/css/fonts
 
 /licenses.json
 libBarcodeScanner.*
@@ -77,3 +76,4 @@ stress-test/config.json
 result.jpg
 
 build-scripts/update.tar
+/hardware/codebase/N7G1/node_modules/

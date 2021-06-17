@@ -58,13 +58,13 @@ const REPORT_ID_SEND = 0x04;
 const PREFIX = [0x02, 0x01, 0x30, 0x30, 0x30, 0x30];  // "~<SOH>0000"
 const STORAGE_TYPE_POS = 7;
 const STORAGE_TYPE_LENGTH = 1;
-const STORAGE_TYPE_PERMANET = 0x40;     // "@"  Save the setting to permanent memory
+const STORAGE_TYPE_PERMANENT = 0x40;     // "@"  Save the setting to permanent memory
 const STORAGE_TYPE_TEMPORARY = 0x23;    // "#"  Save the setting to temporary memory, not saved on reboots
 const TAG_DELIMITER = 0x3B;             // ";"
 const SUBTAG_DELIMITER = 0x2C;          // ","
-const QUARY_CURRENT_VALUE = 0x2A;       // What is the scanner’s current value for the setting(s)
-const QUARY_FACTORY_DEFAULT = 0x26;     // What is the factory default value for the setting(s)
-const QUARY_POSSIBLE_RANGE = 0x5E;      // What is the range of possible values for the setting(s)
+const QUERY_CURRENT_VALUE = 0x2A;       // What is the scanner’s current value for the setting(s)
+const QUERY_FACTORY_DEFAULT = 0x26;     // What is the factory default value for the setting(s)
+const QUERY_POSSIBLE_RANGE = 0x5E;      // What is the range of possible values for the setting(s)
 
 const ASCII_CHAR = [        
   '<NUL>',  // 0x00    Null char.
@@ -218,7 +218,7 @@ function splitArrayByDelimiter(arr, delimiter) {
   var i = arr.length;
   var lastSplit = -1;
   while(i < arr.length) {
-    if(arr[i]==delimiter) {
+    if(arr[i] === delimiter) {
       if(lastSplit - i > 1) {
         out_arr.push(arr.slice(lastSplit, i-1));
       }
@@ -267,8 +267,8 @@ function parse_fm430_package(pkg) {
     }
   }
 
-  if(prefix[0]==PREFIX[0] && prefix[1]==PREFIX[1] && prefix[2]==PREFIX[2] &&
-      prefix[3]==PREFIX[3] && prefix[4]==PREFIX[4] && prefix[5]==PREFIX[5]) {
+  if(prefix[0]===PREFIX[0] && prefix[1]===PREFIX[1] && prefix[2]===PREFIX[2] &&
+      prefix[3]===PREFIX[3] && prefix[4]===PREFIX[4] && prefix[5]===PREFIX[5]) {
       // 
   }
   else {
@@ -315,7 +315,7 @@ fm430.on("data", function(hid_package) {
 function parse_HID_POS_package(hid_package){
   var reportID = hid_package[REPORT_ID_POS]; 
 
-  if(reportID != REPORT_ID_RECEIVE) {
+  if(reportID !== REPORT_ID_RECEIVE) {
     console.error("fm430: Incorrect report ID received, expected " + translateToASCII(REPORT_ID_RECEIVE) + " got " + translateToASCII(hid_package[0]));
     return [];
   }
@@ -328,8 +328,7 @@ function parse_HID_POS_package(hid_package){
 
   console.log("fm430: package length: " + length_of_command);
   console.warn("Incorrect report ID received")
-  var command = hid_package.slice(LENGTH_POS, length_of_command + LENGTH_POS);
-  return command;
+  return hid_package.slice(LENGTH_POS, length_of_command + LENGTH_POS);
 }
 
 // Adds HID POS protocol data:
