@@ -9,16 +9,7 @@ function gotScanResult(err, res) {
 }
 
 // TODO: Remove and replace with native functions
-function sendDirectly(state, tag, subTag, resultCallback, errorCallback) {
-  // Illumination
-  let fm430_package = fm430.buildFM430Package(FM430DataTypes.STORAGE_TYPE.PERMANENT, [tag], [subTag], [state]);
-    
-  console.log("fm430: constructed package: " +  fm430_package);
-  fm430.write_to_fm430(fm430_package);
-}
-
-// TODO: Remove and replace with native functions
-function disableScannng(callback) {
+function disableScanning(callback) {
   fm430.init(
     // On correct initialization
     () => {
@@ -33,4 +24,4 @@ function disableScannng(callback) {
     });
 }
 
-disableScannng(gotScanResult);
+disableScanning(gotScanResult);
