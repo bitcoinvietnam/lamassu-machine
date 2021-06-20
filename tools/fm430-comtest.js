@@ -84,9 +84,9 @@ function splitArrayByDelimiter(arr, delimiter) {
 
 function parse_fm430_package(pkg) {
   console.log("fm430: type pkg: " +  Object.prototype.toString.call(pkg));
-  const len = pkg[PC.LENGTH_POS];
+  const len = pkg[PC.PACKAGE_LENGTH_POS];
   console.log("fm430: package length: " + len);
-  let message = pkg.slice(PC.LENGTH_POS, len + PC.LENGTH_POS);
+  let message = pkg.slice(PC.PACKAGE_LENGTH_POS, len + PC.PACKAGE_LENGTH_POS);
   console.log("fm430: type message: " +  Object.prototype.toString.call(message));
 
   const prefix = message.slice(PC.PREFIX_POS, PC.PREFIX_LENGTH);
@@ -170,16 +170,16 @@ function parse_HID_POS_package(hid_package){
     console.error("fm430: Incorrect report ID received, expected " + translateToASCII(PC.REPORT_ID_RECEIVE) + " got " + translateToASCII(hid_package[0]));
     return [];
   }
-  const length_of_command = hid_package[PC.LENGTH_POS];
+  const length_of_command = hid_package[PC.PACKAGE_LENGTH_POS];
 
-  if(hid_package.length < length_of_command + PC.LENGTH_POS) {
+  if(hid_package.length < length_of_command + PC.PACKAGE_LENGTH_POS) {
     console.error("fm430: Incorrect report ID received, expected " + translateToASCII(PC.REPORT_ID_RECEIVE) + " got " + translateToASCII(hid_package[0]));
     return [];
   }
 
   console.log("fm430: package length: " + length_of_command);
   console.warn("Incorrect report ID received")
-  return hid_package.slice(PC.LENGTH_POS, length_of_command + PC.LENGTH_POS);
+  return hid_package.slice(PC.PACKAGE_LENGTH_POS, length_of_command + PC.PACKAGE_LENGTH_POS);
 }
 
 // Adds HID POS protocol data:
