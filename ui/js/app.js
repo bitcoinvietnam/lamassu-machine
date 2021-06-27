@@ -147,6 +147,8 @@ function processData(data) {
     $('.js-context-' + data.context).show();
   }
 
+  console.log("setting state: " + data.action)
+
   switch (data.action) {
     case 'wifiList':
       if (cryptomatModel === 'douro1') {
