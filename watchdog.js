@@ -31,6 +31,7 @@ process.on('exit', () => console.log('lamassu-watchdog exiting'))
 setInterval(watch, 1000)
 setInterval(function () {
   if (running) return
+  console.log("watchdog exiting, code 0")
   process.exit(0)
 }, 600000)
 

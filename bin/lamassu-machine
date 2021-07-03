@@ -22,6 +22,7 @@ function bail (err) {
   if (err.stack) console.log(err.stack)
   setTimeout(function () {
     console.log('lamassu-machine bailing out')
+    console.log('calling process.exit(10)')
     process.exit(10)
   }, 7000) // Leave some time to connect for browser to set error screen
 }
